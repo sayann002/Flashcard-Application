@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+body {
+  background-color: orchid;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  max-width: 900px;
+  margin: 1rem, 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px 2px gray;
+  background-color: white;
+  /*
+  width: 150px;
+  */
+  margin: 5px;
+  transition: 250ms;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card:hover {
+  --translate-y: -2px;
+  box-shadow: grey;
+}
+
+.card.front {
+  left: 0px;
+}
+
+.card.flip {
+  --rotate-y: 180deg;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.flashcard-option {
+  margin-top: 0.25rem;
+  color: #555;
+  font-size: 0.75rem;
+}
+
+.flashcard-option :first-child {
+  margin-top: 0;
+}
+
+.card-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: greenyellow;
+  box-shadow: grey;
+  padding: 0.5rem;
+}
+
+.form-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+#category {
+  font-size: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#amount {
+  font-size: 1rem;
+}
+
+.form-group > label {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.btn {
+  background-color: indigo;
+  color: aliceblue;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 7px;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: blue;
 }
